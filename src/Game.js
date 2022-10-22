@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Board from './Components/Board';
-
+import './style.css';
 //This is the main component of the project 
 export class Game extends Component {
   constructor(props){
@@ -10,9 +10,7 @@ export class Game extends Component {
       history:[{
         squares:Array(9).fill(null), 
       }],
-
       xIsNext:true,
-
       //stepNumber it will keep track of moves
       stepNumber:0,
     }
@@ -33,6 +31,17 @@ export class Game extends Component {
     },);  
   }
 
+  restartGame=()=>{
+    this.setState({
+      history:[{
+        squares:Array(9).fill(null), 
+      }],
+      xIsNext:true,
+      //stepNumber it will keep track of moves
+      stepNumber:0,
+    })
+  }
+
   jumpTo(step){
     this.setState({
       stepNumber:step,
@@ -43,30 +52,20 @@ export class Game extends Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-    
     const moves=history.map((step,move)=>{
       const desc=move?
       'Go to move #' + move :
       'Go to game start';
       return(
         <li key={move}>
-          <button onClick={()=>this.jumpTo(move)}>
+          <button className='btn btn-outline-dark' id='moveButton' onClick={()=>this.jumpTo(move)}>
             {desc}
           </button>
         </li>
 
-      )
-    })
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+)
+})
+
     let status;
     if(winner){
       status ='winner: '+winner;
@@ -80,13 +79,20 @@ export class Game extends Component {
       <div className="game">
         <div className="game-board">
           <Board
-          squares={current.squares}
-          onClick={(i)=>this.handleClick(i)}
-          ></Board>
+            squares={current.squares}
+            onClick={(i)=>this.handleClick(i)}
+            ></Board>
         </div>
-        <div className="game-info">
-          <div>{status}</div>
+        <div >
+        <button className="btn btn-outline-dark" id="MovesButtonGame" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Moves
+        </button>
+        <button className='btn btn-outline-dark' id="MovesButtonGame" onClick={this.restartGame}> Restart</button>
+        
+        <div className="collapse" id="collapseExample">
+          <div>{status }</div>
           <ol>{moves}</ol>
+        </div>
         </div>
       </div>
     )

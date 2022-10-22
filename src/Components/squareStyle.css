@@ -1,0 +1,16 @@
+#sqaurebutton {
+    height: 150px;
+    width: 150px;
+    position: relative;
+}
+
+.board {
+    position: absolute;
+    background-color: aliceblue;
+    margin: auto;
+    margin-top: 200px;
+}
+
+#TextInsideSquare{
+    color: dark;
+}

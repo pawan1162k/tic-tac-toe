@@ -1,0 +1,30 @@
+.game-board {
+    margin-left: 33%;
+    margin-right:33%;
+}
+
+#MovesButtonGame{
+    position: relative;
+    background-color: aliceblue;
+    margin-top: 4%;
+    margin-left: 4%;
+}
+
+#moveButton{
+    margin-top: 8%;
+    color: black;
+    background-color: aliceblue;
+}
+
+.game-board{
+    background-color: aliceblue;
+}
+#collapseExample{
+    position: absolute;
+    margin-top: 0.5%;
+    margin-left: 4%;
+}
+
+#WholePageBackground{
+    background-color: aliceblue;
+}

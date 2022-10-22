@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Square from './Square';
-
+import './squareStyle.css';
 
 //This is the board file which contains collection of 9 square which make our tic-tac-toe board
 class Board extends Component {
@@ -16,7 +16,7 @@ class Board extends Component {
     }
     render() {
       return (
-        <div>
+        <div className='board'>
         <div className='board-row'>
           {this.renderSquare(0)}
           {this.renderSquare(1)}
